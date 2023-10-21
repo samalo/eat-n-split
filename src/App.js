@@ -1,5 +1,3 @@
-import { useLayoutEffect } from "react";
-
 const initialFriends = [
   {
     id: 118836,
@@ -32,5 +30,22 @@ export default function App() {
 }
 
 function FriendsList() {
-  return <ul>List</ul>;
+  const friends = initialFriends;
+  return (
+    <ul>
+      {friends.map((friend) => (
+        <Friend friend={friend} key={friend.id} />
+      ))}
+    </ul>
+  );
+}
+
+function Friend({ friend }) {
+  return (
+    <li>
+      <img src={friend.image} alt={friend.name} />
+      <h3>{friend.name}</h3>
+      {friend.balance}
+    </li>
+  );
 }
